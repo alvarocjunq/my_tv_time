@@ -8,8 +8,9 @@ export class AuthService {
   private readonly auth = getAuth(firebaseApp as FirebaseApp);
   readonly user = signal<User | null>(this.auth.currentUser);
   readonly isAllowed = signal(this.auth.currentUser?.email === 'alvarocjunq@gmail.com');
+  readonly ready: Promise<void>;
 
-  constructor() { this.auth.onAuthStateChanged((user) => { this.user.set(user); this.isAllowed.set(user?.email === 'alvarocjunq@gmail.com'); }); }
+  constructor() { this.ready = new Promise((resolve) => { this.auth.onAuthStateChanged((user) => { this.user.set(user); this.isAllowed.set(user?.email === 'alvarocjunq@gmail.com'); resolve(); }); }); }
   async signInWithGoogle(): Promise<void> {
     const result = await signInWithPopup(this.auth, new GoogleAuthProvider());
     if (result.user.email !== 'alvarocjunq@gmail.com') { await this.signOut(); throw new Error('Access Denied: Personal App Only'); }
