@@ -1,0 +1,13 @@
+:host { display: flex; min-height: 100dvh; }
+.app-frame { min-height: 100dvh; display: flex; background: var(--ink); }
+.page-shell { flex: 1; min-width: 0; }
+.side-nav { width: 250px; flex: 0 0 250px; padding: 2rem 1.25rem; background: var(--panel); border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+.brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--paper); font-family: var(--display); font-weight: 700; font-size: 1.08rem; text-decoration: none; }
+.brand-mark { width: 2.15rem; height: 2.15rem; display: grid; place-items: center; border-radius: 9px; background: var(--lime); color: var(--ink); font-size: .78rem; letter-spacing: .04em; }
+.side-nav nav { display: grid; gap: .45rem; margin-top: 4rem; }
+.side-nav nav a { display: flex; gap: .8rem; align-items: center; padding: .8rem .9rem; color: var(--muted); border-radius: 8px; text-decoration: none; font-size: .92rem; transition: .2s ease; }
+.side-nav nav a:hover, .side-nav nav a.active { background: var(--lift); color: var(--paper); }
+.side-nav nav a.active { box-shadow: inset 3px 0 var(--lime); }
+.side-note { margin-top: auto; color: var(--muted); font-size: .75rem; }
+.mobile-header, .bottom-nav { display: none; }
+@media (max-width: 760px) { .side-nav { display: none; } .mobile-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.1rem; border-bottom: 1px solid var(--line); } .avatar { width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: var(--coral); color: var(--paper); text-decoration: none; font-weight: 700; } .bottom-nav { display: flex; position: fixed; z-index: 10; right: 0; bottom: 0; left: 0; justify-content: space-around; padding: .55rem .6rem calc(.55rem + env(safe-area-inset-bottom)); background: rgba(20, 23, 28, .96); border-top: 1px solid var(--line); } .bottom-nav a { color: var(--muted); text-decoration: none; display: grid; justify-items: center; gap: .15rem; font-size: 1.1rem; } .bottom-nav a.active { color: var(--lime); } .bottom-nav small { font-size: .65rem; } }
